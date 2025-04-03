@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weird Website</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+            background-color: black;
+            color: white;
+        }
+        button {
+            background-color: red;
+            color: white;
+            font-size: 20px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Weird Website!</h1>
+    <button onclick="speak()">Click if you dare...</button>
+
+    <script>
+        const messages = [
+            "I can see you...",
+            "Why are you here?",
+            "Don't click again...",
+            "You can't escape!",
+            "Stop pressing this button!",
+            "I know where you are..."
+        ];
+
+        function speak() {
+            let randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            let msg = new SpeechSynthesisUtterance(randomMessage);
+            window.speechSynthesis.speak(msg);
+        }
+
+        document.addEventListener("mouseleave", function() {
+            let msg = new SpeechSynthesisUtterance("Don't try to leave!");
+            window.speechSynthesis.speak(msg);
+        });
+    </script>
+</body>
+</html>
